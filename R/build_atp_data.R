@@ -12,11 +12,11 @@ build_atp_data <- function(path, keep_cols) {
   file_names <- file_paths |>
     purrr::set_names(nm = seasons)
 
-  purrr::map(all_files, ~ readr::read_csv(.x,
-                                                     col_types = readr::cols(
-                                                       .default = "?",
-                                                       winner_seed = "numeric",
-                                                       loser_seed = "numeric"))) |>
+  purrr::map(file_names, ~ readr::read_csv(.x,
+                                          col_types = readr::cols(
+                                            .default = "?",
+                                            winner_seed = "numeric",
+                                            loser_seed = "numeric"))) |>
     purrr::list_rbind() |>
     dplyr::mutate(season = stringr::str_sub(.data$tourney_date, start = 1L, end = 4L),
                   tourney_date = lubridate::ymd(.data$tourney_date)) |>
