@@ -4,10 +4,12 @@
 \alias{build_atp_data}
 \title{Build ATP dataset using Jeff Sackman Github data}
 \usage{
-build_atp_data(path)
+build_atp_data(path, keep_cols)
 }
 \arguments{
 \item{path}{file path for directory of yearly match data csvs}
+
+\item{keep_cols}{columns to keep after pre-processing}
 }
 \value{
 dataframe of yearly ATP match data with season id
